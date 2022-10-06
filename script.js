@@ -50,3 +50,31 @@ function play(playerSelection) {
     return result;
 }
 
+let playerSelection = "scissors";
+let comScore = 0;
+let playerScore = 0;
+
+function game(playerSelection) {
+    let result;
+
+    for (i=1;i<=5;i++) {
+        result = play(playerSelection);
+        if (result == 'lose') {
+            comScore++;
+        } else if (result == 'win') {
+            playerScore++;
+        } else {
+
+        }
+    }
+    result = (comScore > playerScore) ? 
+        'Computer WINS' : (comScore < playerScore) ?
+        'Player WINS' : 'Its a DRAW';
+
+  
+
+    return result;
+}
+
+console.log(game(playerSelection));
+
