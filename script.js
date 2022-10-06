@@ -1,3 +1,8 @@
+
+let playerSelection;
+let comScore = 0;
+let playerScore = 0;
+
 function getComputerChoice () {
     let result;
     let random = Math.floor(Math.random()*10);
@@ -50,31 +55,43 @@ function play(playerSelection) {
     return result;
 }
 
-let playerSelection = "scissors";
-let comScore = 0;
-let playerScore = 0;
 
-function game(playerSelection) {
+
+function game() {
     let result;
-
+    let check = 0;
     for (i=1;i<=5;i++) {
+        while (check == 0) {
+        playerSelection = prompt("Paper, Scissors or Rock");
+        playerSelection = playerSelection.toLowerCase();
+        if (playerSelection == 'paper' || playerSelection == 'scissors' || playerSelection == 'rock') {
+            check++;
+        } else {
+            alert('Word have nothing to do with Paper, Scissors or Rock. Please choose correct');
+        }
+        }
+
         result = play(playerSelection);
         if (result == 'lose') {
             comScore++;
+            console.log('You lose');
         } else if (result == 'win') {
             playerScore++;
+            console.log('You win');
         } else {
-
+            console.log('Its a draw');
         }
+        check--;
     }
     result = (comScore > playerScore) ? 
         'Computer WINS' : (comScore < playerScore) ?
         'Player WINS' : 'Its a DRAW';
 
-  
-
+    
     return result;
+    
 }
 
-console.log(game(playerSelection));
+game();
+
 
