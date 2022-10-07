@@ -1,7 +1,10 @@
 
+let start = document.querySelector('#start');
+
 let playerSelection;
 let comScore = 0;
 let playerScore = 0;
+let scoreCounter = 0;
 
 function getComputerChoice () {
     let result;
@@ -55,8 +58,6 @@ function play(playerSelection) {
     return result;
 }
 
-
-
 function game() {
     let result;
     let check = 0;
@@ -89,9 +90,52 @@ function game() {
 
     
     return result;
-    
 }
 
-game();
+function updateBar() {
+  switch (scoreCounter) {
+    case 0:
+      comBar.style.width = '50%';
+      playerBar.style.width = '50%';
+    case 1:
+      comBar.style.width = '40%';
+      playerBar.style.width = '60%';
+    case 2:
+      comBar.style.width = '25%';
+      playerBar.style.width = '75%';
+    case 3:
+      comBar.style.width = '0%';
+      playerBar.style.width = '100%';
+    case -1:
+      comBar.style.width = '60%';
+      playerBar.style.width = '40%';c
+    case -2:
+      comBar.style.width = '75%';
+      playerBar.style.width = '25%';
+    case -3: 
+      comBar.style.width = '100%';
+      playerBar.style.width = '0%';
+  }
+}
+
+function endResult() {
+  if (scoreCounter == -4) {
+    defeated.style.display = 'flex';
+    defeated.style.animation = 'slideIn 2s';
+  } else {
+    winner.style.display = 'flex';
+    winner.style.animation = 'slideInR  2s';
+  }
+}
+
+start.addEventListener('click',() => {
+    start.style.display = 'none';
+    container.style.display = 'flex';
+  })
+
+
+
+
+
 
 
