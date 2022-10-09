@@ -5,6 +5,7 @@ let rockBtn = document.querySelector('.r');
 const paperBtn = document.querySelector('.p');
 const scissorsBtn = document.querySelector('.s');
 let gameStatus = document.querySelector('#results');
+let enemyBtn = document.querySelector('.enemy');
 
 let computerChoice;
 let playerSelection;
@@ -26,16 +27,21 @@ function getComputerChoice () {
 }
 
 function play(playerSelection) {
+    rockBtn.style.animationPlayState = 'paused';
+    paperBtn.style.animationPlayState = 'paused';
+    scissorsBtn.style.animationPlayState = 'paused';
+
     let result;
     computerChoice = getComputerChoice();
 
     switch (computerChoice) {
         case 'rock':
+          enemyBtn.textContent = '✊'
             if (playerSelection == "paper") {
                 result = 'win';
                 scoreCounter++;
                 gameStatus.textContent = 'Point for you. Paper beats Rock!';
-            } else if (playerSelection == 'rock') {
+             } else if (playerSelection == 'rock') {
                 result = 'draw';
                 gameStatus.textContent = 'Ahhh a draw.';
             } else if (playerSelection == 'scissors') {
@@ -45,6 +51,7 @@ function play(playerSelection) {
             }
             break;
         case 'paper':
+          enemyBtn.textContent = '✋'
             if (playerSelection == "paper") {
                 result = 'draw';
                 gameStatus.textContent = 'Unfortunaly a drawww.';
@@ -59,6 +66,7 @@ function play(playerSelection) {
             }
             break;
         case 'scissors':
+          enemyBtn.textContent = '✌️'
             if (playerSelection == "paper") {
                 result = 'lose';
                 scoreCounter--;
@@ -77,9 +85,8 @@ function play(playerSelection) {
     }
     updateBar();
     endResult();
-    
+    setTimeout(wait, 1000);
 
-}
 
 function updateBar() {
   switch (scoreCounter) {
@@ -132,10 +139,17 @@ function endResult() {
 function updateEndScene() {
   container.style.display = 'none';
   barContainer.style.display = 'none';
-  main.style.height = '250px';
   start.textContent = 'Restart';
   start.style.display = 'block';
 }
+
+function wait() {    
+rockBtn.style.animationPlayState = 'running';
+paperBtn.style.animationPlayState = 'running';
+scissorsBtn.style.animationPlayState = 'running';
+enemyBtn.textContent = '';
+}};
+
 
 start.addEventListener('click',() => {
   winner.style.display = 'none';

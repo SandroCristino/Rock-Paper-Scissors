@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
+
+  <div id="back">
+
     <head>
         <script src="./script.js" defer></script> 
         <link rel="stylesheet" href="./styles.css">
         <title>Rock-Paper-Scissors</title>
         <meta charset="UTF-8">
+        
     </head>
     <body>
         <div id="main">
@@ -15,19 +19,18 @@
 
               <div class="playerContainer">
                 <div id="box" class="s">
-                  <div class="scissors">s</div>
+                  <div class="scissors">✌️</div>
                 </div>
                 <div id="box" class="r">
-                  <div class="rock">r</div>
+                  <div class="rock">✊</div>
                 </div>
                 <div id="box" class="p">
-                  <div class="paper">p</div>
+                  <div class="paper">✋</div>
                 </div>
 
               </div>
               <div class="comContainer">
-                <div id="box"> 
-                </div>
+                <div id="box" class="enemy"></div>
               </div>
             </div>
 
@@ -36,8 +39,12 @@
                 <div id="comBar"></div>
                 <div id="playerBar"></div>
             </div>
+            <div id="defeated"><img src="./img/gameover.png" width="100%" background-repeat="no-repeat" alt="You lose"> </div>
+            <div id="winner"><img src="./img/winner.jpg" width="100%" background-repeat="no-repeat" alt="Victory"> </div> 
+
         </div>
-        <div id="defeated"><img src="./img/gameover.png" width="100%" background-repeat="no-repeat" alt="You lose"> </div>
-        <div id="winner"><img src="./img/winner.jpg" width="100%" background-repeat="no-repeat" alt="Victory"> </div> 
     </body>
+
+  </div>
+
 </html>
